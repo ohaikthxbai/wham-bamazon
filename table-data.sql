@@ -9,4 +9,4 @@ VALUES
 ("Self Help Book", "Books", 6.50, 45),
 ("Italian Dictionary", "Books", 3.00, 50),
 ("Gamecube Controller", "Video Games", 20.00, 10),
-("Mechanical Keyboard", "Computer Components", 119.99, 25)
+("Mechanical Keyboard", "Computer Components", 119.99, 25);
