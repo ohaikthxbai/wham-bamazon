@@ -19,7 +19,7 @@ var inquirer = require("inquirer");
 // create configuration
 var config = {
 host: 'localhost',          // "house"
-port: 3306,                 // "door"
+port: 8889,                 // "door"
 user: 'root',               // username
 password: 'root',           // password
 database: 'bamazon_db'      // specific database
@@ -27,3 +27,29 @@ database: 'bamazon_db'      // specific database
 
 // create the connection
 var connection = mysql.createConnection(config);
+
+// this is why you take notes
+connection.connect(function(error) {
+    if (error) {
+        throw error;
+        console.log("Something went wrong while trying to connect to the database.")
+    }
+    else {
+        console.log('connect as id' + connection.threadId)
+        afterConnection();
+    }
+});
+
+function afterConnection() {
+    connection.query("select * from products", function(error, res) {
+        if (error) {
+            throw error;
+            console.log("Something went wrong in afterConnection")
+        }
+        else {
+            console.log(res);
+        }
+    });
+}
+
+afterConnection();
