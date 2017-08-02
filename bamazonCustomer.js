@@ -29,6 +29,10 @@ database: 'bamazon_db'      // specific database
 var connection = mysql.createConnection(config);
 
 // this is why you take notes
+// declare query so rest of the code is easily legible
+var query = "SELECT * FROM products";
+
+// connecting to the databse
 connection.connect(function(error) {
     if (error) {
         throw error;
@@ -40,8 +44,9 @@ connection.connect(function(error) {
     }
 });
 
+// test and display sql data
 function afterConnection() {
-    connection.query("select * from products", function(error, res) {
+    connection.query(query, function(error, res) {
         if (error) {
             throw error;
             console.log("Something went wrong in afterConnection")
@@ -51,5 +56,3 @@ function afterConnection() {
         }
     });
 }
-
-afterConnection();
