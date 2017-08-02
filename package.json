@@ -1,0 +1,19 @@
+{
+  "name": "packages.json",
+  "version": "1.0.0",
+  "description": "bamazon application!",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohaikthxbai/wham-bamazon.git"
+  },
+  "author": "Justin Gudani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ohaikthxbai/wham-bamazon/issues"
+  },
+  "homepage": "https://github.com/ohaikthxbai/wham-bamazon#readme"
+}
