@@ -32,14 +32,17 @@ var connection = mysql.createConnection(config);
 // declare query so rest of the code is easily legible
 var query = "SELECT * FROM products";
 
+// testing db data, possibly convert to json?
+var sqlToString = "";
+
 // connecting to the databse
 connection.connect(function(error) {
     if (error) {
         throw error;
-        console.log("Something went wrong while trying to connect to the database.")
+        console.log("Something went wrong while trying to connect to the database.");
     }
     else {
-        console.log('connect as id' + connection.threadId)
+        console.log('connect as id' + connection.threadId);
         afterConnection();
     }
 });
@@ -49,10 +52,14 @@ function afterConnection() {
     connection.query(query, function(error, res) {
         if (error) {
             throw error;
-            console.log("Something went wrong in afterConnection")
+            console.log("Something went wrong in the afterConnection function");
         }
         else {
-            console.log(res);
+            //console.log(res);
+            // stringify JSON for legibility - tested; works
+            sqlToString = JSON.stringify(res,null,2);
+            //console.log(sqlToString;
+            //
         }
     });
 }
