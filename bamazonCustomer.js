@@ -34,6 +34,7 @@ var query = "SELECT * FROM products";
 
 // testing db data, possibly convert to json?
 var sqlToString = "";
+var sqlJSON = "";
 
 // connecting to the databse
 connection.connect(function(error) {
@@ -42,7 +43,7 @@ connection.connect(function(error) {
         console.log("Something went wrong while trying to connect to the database.");
     }
     else {
-        console.log('connect as id' + connection.threadId);
+        //console.log('connect as id' + connection.threadId);
         afterConnection();
     }
 });
@@ -58,8 +59,19 @@ function afterConnection() {
             //console.log(res);
             // stringify JSON for legibility - tested; works
             sqlToString = JSON.stringify(res,null,2);
-            //console.log(sqlToString;
-            //
+            //console.log(sqlToString);
+            // parsing the stringified data
+            sqlJSON = JSON.parse(sqlToString);
+            //test
+            //console.log(sqlJSON);
+            for (i = 0; i < sqlJSON.length; i++) {
+                console.log(
+                    sqlJSON[i].item_id, 
+                    sqlJSON[i].product_name, 
+                    sqlJSON[i].price, 
+                    sqlJSON[i].stock_quantity
+                );
+            }
         }
     });
 }
