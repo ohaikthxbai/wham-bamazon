@@ -68,7 +68,7 @@ function afterConnection() {
                 console.log(
                     sqlJSON[i].item_id, 
                     sqlJSON[i].product_name, 
-                    sqlJSON[i].price, 
+                    "$" + sqlJSON[i].price, 
                     sqlJSON[i].stock_quantity
                 );
             }
