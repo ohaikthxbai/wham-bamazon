@@ -143,7 +143,23 @@ function inventoryCheck(id, quantity) {
             // parsing the stringified data
             inventoryJSON = JSON.parse(inventoryString);
             //test
-            console.log("Current Stock: " + inventoryJSON[0].stock_quantity);
+            //console.log("Current Stock: " + inventoryJSON[0].stock_quantity);
+            currentStock = inventoryJSON[0].stock_quantity;
+            // update the database if the current inventory has more or equal to the requested quantity
+            if (currentStock >= quantity) {
+                // set new SQL query
+                var update = "UPDATE products SET ? WHERE ?";
+                connection.query(update, [{stock_quantity: currentStock - quantity}, {item_id: id}],
+                function(error, res) {
+                    console.log("");
+                    console.log("Inventory Updated!");
+                    console.log("");
+                    afterConnection();
+                });
+            } 
+            else {
+                console.log("Insufficienet Quantity!");
+            }
         }
     });
 }
