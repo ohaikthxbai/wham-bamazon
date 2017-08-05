@@ -92,23 +92,36 @@ function customerPrompt() {
             type: "input",
             name: "id",
             message: "Enter the ID number of the product you would like to purchase: ",
+            // validate returns truef the entry is valid, otherwise throw error
             validate: function(entry) {
-                // check if input is a number
-                if (isNaN(entry)) {
-                    return "Please enter a number for the ID: "
-                }
+                // fine accepted value as the validated number
+                var accepted = !isNaN(entry);
+                // return the accepted value or prompt for the proper response
+                return accepted || "Please enter a number value: ";
+            }
+        },
+        {
+            // How many would you like?
+            type: "input",
+            name: "quantity",
+            message: "How many would you like to purchase? ",
+            // validate returns truef the entry is valid, otherwise throw error
+            validate: function(entry) {
+                // fine accepted value as the validated number
+                var accepted = !isNaN(entry);
+                // return the accepted value or prompt for the proper response
+                return accepted || "Please enter a number value: ";
             }
         }
-        // {
-        //     // How many would you like?
-        //     type: "input",
-        //     name: "quantity",
-        //     message: "How many would you like to purchase? ",
-        //     validate: function(entry) {
-        //         if (isNaN(entry)) {
-        //             return "Please enter a number for the quantity: "
-        //         }
-        //     }
-        // }
-    ]);
+    ]).then(function(userInput) {
+        // run inventory check with provided parameters
+        inventoryCheck(userInput.id, userInput.quantity);
+    });
+}
+
+// check the catalog for the user's input and quantity
+function inventoryCheck(id, quantity) {
+    // testing
+    //console.log("ID selected: " + id);
+    //console.log("Quantity selected: " + quantity);
 }
