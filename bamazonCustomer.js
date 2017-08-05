@@ -156,6 +156,7 @@ function inventoryCheck(id, quantity) {
                     console.log("Inventory Updated!");
                     console.log("");
                     // display the update catalog
+                    
                     afterConnection();
                 });
             } 
