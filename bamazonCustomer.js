@@ -64,6 +64,10 @@ function afterConnection() {
             sqlJSON = JSON.parse(sqlToString);
             //test
             //console.log(sqlJSON);
+            // iterate through data and display it (cleaner way to display table data???)
+            console.log("");
+            console.log("Bamazon Catalog: ");
+            console.log("");
             for (i = 0; i < sqlJSON.length; i++) {
                 console.log(
                     sqlJSON[i].item_id, 
@@ -72,6 +76,31 @@ function afterConnection() {
                     sqlJSON[i].stock_quantity
                 );
             }
+            // run function
+            console.log("");
+            console.log("*********************************************");
+            customerPrompt();
         }
     });
+}
+
+// prompt user for their item and quantity request
+function customerPrompt() {
+    inquirer.prompt([
+        {
+            // What item would you like to purchase? (ID)
+            type: "input",
+            name: "id",
+            message: "Enter the ID number of the product you would like to purchase: ",
+            validate: function(entry) {
+                // check if input is a number
+                if (isNaN(entry)) {
+                    return "Please enter a number for the ID: "
+                } 
+            }
+        },
+        //{
+            // How many would you like?
+        //}
+    ]);
 }
