@@ -126,22 +126,24 @@ function inventoryCheck(id, quantity) {
     // testing
     //console.log("ID selected: " + id);
     //console.log("Quantity selected: " + quantity);
+    // instead of selecting all, choose only the quantity where the id is selected
     var query = "SELECT stock_quantity FROM products WHERE ?";
 
     connection.query(query,{item_id: id}, function(error, res) {
         if (error) {
-            throw error;
             console.log("Something went wrong in the inventoryCheck function");
+            throw error;
         }
         else {
+            // grabbed from afterConnection function; changing variable names
             //console.log(res);
             // stringify JSON for legibility - tested; works
-            sqlToString = JSON.stringify(res,null,2);
+            inventoryString = JSON.stringify(res,null,2);
             //console.log(sqlToString);
             // parsing the stringified data
-            sqlJSON = JSON.parse(sqlToString);
+            inventoryJSON = JSON.parse(inventoryString);
             //test
-            console.log(sqlJSON);
+            console.log("Current Stock: " + inventoryJSON[0].stock_quantity);
         }
     });
 }
