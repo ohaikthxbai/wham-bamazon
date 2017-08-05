@@ -64,10 +64,11 @@ function afterConnection() {
             sqlJSON = JSON.parse(sqlToString);
             //test
             //console.log(sqlJSON);
+            console.log("*********************************************");
+            console.log("");
+            console.log("Dis Wham-Bamazon Catalog: ");
+            console.log("");
             // iterate through data and display it (cleaner way to display table data???)
-            console.log("");
-            console.log("Bamazon Catalog: ");
-            console.log("");
             for (i = 0; i < sqlJSON.length; i++) {
                 console.log(
                     sqlJSON[i].item_id, 
@@ -79,6 +80,7 @@ function afterConnection() {
             // run function
             console.log("");
             console.log("*********************************************");
+            console.log("");
             customerPrompt();
         }
     });
@@ -124,4 +126,5 @@ function inventoryCheck(id, quantity) {
     // testing
     //console.log("ID selected: " + id);
     //console.log("Quantity selected: " + quantity);
+
 }
