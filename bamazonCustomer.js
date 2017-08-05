@@ -151,13 +151,16 @@ function inventoryCheck(id, quantity) {
                 var update = "UPDATE products SET ? WHERE ?";
                 connection.query(update, [{stock_quantity: currentStock - quantity}, {item_id: id}],
                 function(error, res) {
+                    // status update
                     console.log("");
                     console.log("Inventory Updated!");
                     console.log("");
+                    // display the update catalog
                     afterConnection();
                 });
             } 
             else {
+                // if the quantity requested is less than the current stock
                 console.log("Insufficient Quantity!");
             }
         }
