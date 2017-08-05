@@ -158,7 +158,7 @@ function inventoryCheck(id, quantity) {
                 });
             } 
             else {
-                console.log("Insufficienet Quantity!");
+                console.log("Insufficient Quantity!");
             }
         }
     });
