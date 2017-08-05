@@ -96,11 +96,19 @@ function customerPrompt() {
                 // check if input is a number
                 if (isNaN(entry)) {
                     return "Please enter a number for the ID: "
-                } 
+                }
             }
-        },
-        //{
-            // How many would you like?
-        //}
+        }
+        // {
+        //     // How many would you like?
+        //     type: "input",
+        //     name: "quantity",
+        //     message: "How many would you like to purchase? ",
+        //     validate: function(entry) {
+        //         if (isNaN(entry)) {
+        //             return "Please enter a number for the quantity: "
+        //         }
+        //     }
+        // }
     ]);
 }
