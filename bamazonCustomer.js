@@ -121,10 +121,27 @@ function customerPrompt() {
     });
 }
 
-// check the catalog for the user's input and quantity
+// query databse for the user's input and quantity
 function inventoryCheck(id, quantity) {
     // testing
     //console.log("ID selected: " + id);
     //console.log("Quantity selected: " + quantity);
+    var query = "SELECT stock_quantity FROM products WHERE ?";
 
+    connection.query(query,{item_id: id}, function(error, res) {
+        if (error) {
+            throw error;
+            console.log("Something went wrong in the inventoryCheck function");
+        }
+        else {
+            //console.log(res);
+            // stringify JSON for legibility - tested; works
+            sqlToString = JSON.stringify(res,null,2);
+            //console.log(sqlToString);
+            // parsing the stringified data
+            sqlJSON = JSON.parse(sqlToString);
+            //test
+            console.log(sqlJSON);
+        }
+    });
 }
