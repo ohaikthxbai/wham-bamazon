@@ -144,10 +144,10 @@ function inventoryCheck(id, quantity) {
             inventoryJSON = JSON.parse(inventoryString);
             //test
             //console.log("Current Stock: " + inventoryJSON[0].stock_quantity);
+            // define variables for the stock quantity and price
             currentStock = inventoryJSON[0].stock_quantity;
             currentPrice = inventoryJSON[0].price;
-            console.log("Item Price: " + currentPrice);
-            console.log("Total Cost: " + currentPrice * quantity);
+
             // update the database if the current inventory has more or equal to the requested quantity
             if (currentStock >= quantity) {
                 // set new SQL query
@@ -159,13 +159,19 @@ function inventoryCheck(id, quantity) {
                     console.log("Inventory Updated!");
                     console.log("");
                     // display the update catalog
-                    
+                    //console.log("Item Price: $" + currentPrice);
+                    console.log("Here is your final total for your requested item!: ");
+                    console.log("Total: $" + currentPrice * quantity);
+                    console.log("");
+                    // prompt for another session
                     afterConnection();
                 });
             } 
             else {
                 // if the quantity requested is less than the current stock
                 console.log("Insufficient Quantity!");
+                console.log("Please try again: ");
+                afterConnection();
             }
         }
     });
