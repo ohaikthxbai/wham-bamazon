@@ -127,7 +127,7 @@ function inventoryCheck(id, quantity) {
     //console.log("ID selected: " + id);
     //console.log("Quantity selected: " + quantity);
     // instead of selecting all, choose only the quantity where the id is selected
-    var query = "SELECT stock_quantity FROM products WHERE ?";
+    var query = "SELECT stock_quantity, price FROM products WHERE ?";
 
     connection.query(query,{item_id: id}, function(error, res) {
         if (error) {
@@ -145,6 +145,9 @@ function inventoryCheck(id, quantity) {
             //test
             //console.log("Current Stock: " + inventoryJSON[0].stock_quantity);
             currentStock = inventoryJSON[0].stock_quantity;
+            currentPrice = inventoryJSON[0].price;
+            console.log("Item Price: " + currentPrice);
+            console.log("Total Cost: " + currentPrice * quantity);
             // update the database if the current inventory has more or equal to the requested quantity
             if (currentStock >= quantity) {
                 // set new SQL query
