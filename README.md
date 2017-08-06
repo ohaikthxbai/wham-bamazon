@@ -3,8 +3,8 @@ Bamazon application using JS, SQL, etc.
 
 APPLICATION SCREENSHOTS
 01 - Input validation
-![Alt text](http://imgur.com/jPVIstn "input-val")
+[Imgur](http://i.imgur.com/jPVIstn.gifv)
 02 -  Item purchase and table upate
-![Alt text](http://imgur.com/zej0ouS "working")
+[Imgur](http://i.imgur.com/zej0ouS.gifv)
 03 - Insufficient
-![Alt text](http://imgur.com/k2WyzOc "no-stock")
+[Imgur](http://i.imgur.com/k2WyzOc.gifv)
